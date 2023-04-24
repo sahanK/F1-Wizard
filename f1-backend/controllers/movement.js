@@ -1,10 +1,18 @@
 import firebase from '../config/firebase.js';
-import { getFirestore, collection, getDocs, setDoc, doc } from 'firebase/firestore/lite';
+import {
+  getFirestore,
+  collection,
+  getDocs,
+  setDoc,
+  doc,
+  serverTimestamp
+} from 'firebase/firestore/lite';
 import { nanoid } from 'nanoid';
 
 const database = getFirestore(firebase);
 
 const collectionName = 'F1-VehicleMovement';
+const realTimeCollectionName = 'F1-RealtimeMovement';
 
 export const getMovements = async (request, response) => {
   try {
@@ -21,7 +29,15 @@ export const getMovements = async (request, response) => {
 
 export const addMovement = async (request, response) => {
   try {
-    await setDoc(doc(database, collectionName, nanoid()), request.body);
+    await setDoc(doc(database, collectionName, nanoid()), {
+      ...request.body,
+      timestamp: serverTimestamp(),
+    });
+    const deviceDocument = doc(database, realTimeCollectionName, request.body.deviceId);
+    await setDoc(deviceDocument, {
+      ...request.body,
+      timestamp: serverTimestamp(),
+    });
     response.status(201).json({
       message: 'data added',
     });
