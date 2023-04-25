@@ -1,0 +1,65 @@
+{
+	"info": {
+		"_postman_id": "03ca0a14-92fd-4334-8c83-23db5245d053",
+		"name": "F1-API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11837870"
+	},
+	"item": [
+		{
+			"name": "getMovements",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://f1-wizard-production.up.railway.app/api/v1/movement",
+					"protocol": "https",
+					"host": [
+						"f1-wizard-production",
+						"up",
+						"railway",
+						"app"
+					],
+					"path": [
+						"api",
+						"v1",
+						"movement"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addMovement",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"accelerationX\":-115.3334808,\n   \"accelerationY\":23.29079437,\n   \"accelerationZ\":-33.17884827,\n   \"speed\":4317.387695,\n   \"rotationX\":0,\n   \"rotationY\":0,\n   \"rotationZ\":-7.374015808,\n   \"direction\":\"forward\",\n   \"latitude\":0,\n   \"longitude\":0,\n   \"deviceId\":\"CAD8254-41524\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://f1-wizard-production.up.railway.app/api/v1/movement",
+					"protocol": "https",
+					"host": [
+						"f1-wizard-production",
+						"up",
+						"railway",
+						"app"
+					],
+					"path": [
+						"api",
+						"v1",
+						"movement"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
